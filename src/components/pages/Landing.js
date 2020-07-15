@@ -4,12 +4,12 @@ import {Container, Row, Col} from "react-bootstrap"
 export default class Landing extends Component {
     render() {
         return (
-            <div class="container">
-                <div className="row row1">
-                    <div className="col-md-5  ">
+            <div className="container">
+                <div className="row">
+                    <div className="col">
                        <b>Covid19</b> 
                     </div>
-                    <div className="col-md-5">
+                    <div className="col">
                         <b>Rate Us</b>
                     </div>
                 </div>
