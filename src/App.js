@@ -1,10 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router,Switch,Route} from 'react-router-dom';
+import Landing from './components/pages/Landing'
 import './App.css';
 
 const App = () => {
   return(
-    <h1>Hello World</h1>
+    <>
+      <Landing/>
+    </>
   )
 }
 
