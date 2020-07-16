@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import MapChart from "./MapChart";
 import ReactTooltip from "react-tooltip";
+import { Row,Container } from 'react-bootstrap';
 
-function WorldMap() {
+const WorldMap = () => {
    const [content, setContent] = useState("");
   return (
-    <div>
-    <div className="map" style={{'height':'200px', 'width': '700px', 'border':'10px', 'outline':'dotted'}}>
+    <Container>
+    <Row>
+    <div className="map" style={{'height':'20px', 'width': '100%', 'border':'10px'}}>
       <MapChart setTooltipContent={setContent} />
     </div>
       <ReactTooltip>{content}</ReactTooltip>
-    </div>
+    </Row>
+    </Container>
   ); 
 }
 
