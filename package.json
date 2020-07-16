@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@amcharts/amcharts4": "^4.9.30",
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
     "@fortawesome/react-fontawesome": "^0.1.11",
@@ -17,7 +18,9 @@
     "react-rating": "^2.0.5",
     "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "react-simple-maps": "^2.1.2",
+    "react-tooltip": "^4.2.7"
   },
   "scripts": {
     "start": "react-scripts start",
