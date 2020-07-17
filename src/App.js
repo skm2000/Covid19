@@ -7,6 +7,7 @@ import WorldMap from './components/Maps/WorldMap'
 import CountryPicker from './components/CountryTable/CountryPicker';
 import CountryCases from './components/CountryTable/CountryCases';
 import CountryTable from './components/CountryTable/CountryTable';
+import MyMaps from './components/Maps/MyMaps';
 
 const App = () => {
   return(
@@ -15,6 +16,7 @@ const App = () => {
           <Heading/>
           <AllCases/>
           <CountryPicker/>
+          <MyMaps/>
           <CountryCases/>
           <CountryTable/>
      </div>
