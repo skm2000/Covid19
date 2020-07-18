@@ -5,7 +5,7 @@ import AllCases from './components/Cases/AllCases';
 import CountryPicker from './components/CountryTable/CountryPicker';
 import CountryCases from './components/CountryTable/CountryCases';
 import CountryTable from './components/CountryTable/CountryTable';
-import { fetchCountryData } from './components/api/index';
+import { fetchCountryData,fetchCountryStateData } from './components/api/index';
 
 
 class App extends React.Component {
@@ -13,29 +13,33 @@ class App extends React.Component {
   state = { //constructor invoked on its own
       data:{},
       country: undefined,
+      stateCountry:{}
   }
 
   async componentWillMount(){
       const fetchedCountry = await fetchCountryData();
+      const fetchStateData = await fetchCountryStateData();
+      console.log(fetchStateData)
 
       this.setState({ data: fetchedCountry});
+      this.setState({ stateCountry: fetchStateData});
   }
 
     handleCountryChange = async (country) => {
-      console.log(country)
       const fetchCountry = await fetchCountryData(country);
-      this.setState({ data: fetchCountry, country:country})
+      const fetchStateData = await fetchCountryStateData(country);
+      console.log(fetchStateData);
+      this.setState({ data: fetchCountry, country:country, stateCountry:fetchStateData });
   }
 
   render(){
-      const { data,country } = this.state
       return (
           <div className="container-fluid">
               <Heading/>
               <AllCases/>
               <CountryPicker handleCountryChange={this.handleCountryChange}/>
-              <CountryCases data={data}/>
-              {this.state.country != undefined ? <CountryTable data={data}/> : null}
+              <CountryCases data={this.state.data}/>
+              {this.state.country != undefined ? <CountryTable data={this.state.data}/> : null}
           </div>
       )
   }
