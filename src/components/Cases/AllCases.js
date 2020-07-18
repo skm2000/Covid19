@@ -1,85 +1,65 @@
-import React from 'react'
-import { Container,Row,Col,Card } from 'react-bootstrap';
-import {
-    getCases
-} from './apiFetch'
+import React,{ useState,useEffect } from 'react'
+import axios from 'axios';
+import { Row,Col,Card } from 'react-bootstrap';
 
+const AllCases = () => {
 
-export default class AllCases extends React.Component {
-    constructor(props) {
-        super()
-        this.state = {
-            cases: null,
-            active: null,
-            deaths: null,
-            recovered: null,
-            confirmed: null,
+    const [confirmed,setConfirmed] = useState(0);
+    const [recovered,setRecovered] = useState(0);
+    const [deaths,setDeaths] = useState(0);
+    const [lastUpdate,setLastUpdate] = useState('');
+
+    useEffect(() => {
+        const fetchWorlddata = async() => {
+            const res = await axios('https://covid19.mathdro.id/api');
+            setConfirmed(res.data.confirmed);
+            setRecovered(res.data.recovered);
+            setDeaths(res.data.deaths);
+            setLastUpdate(res.data.lastUpdate);
         }
-    }
+        fetchWorlddata();    
+    },[])
 
-    componentWillMount() {
-        getCases("India")
-            .then((result) => {
-                console.log(result.active);
-                this.setState({
-                    cases: result,
-                    active: result.active,
-                    deaths: result.deaths,
-                    confirmed: result.confirmed,
-                    recovered: result.recovered
-                }, () => {
-                        console.log("state", this.state)
-                })
-            })
-        .catch(err => console.log(err))
-    }
-
-    render() {
-        return (
-            <Row className="my-3">
-                <Col className="my-2" xs={12} md={3}>
-                    <Card>
-                        <Card.Body>
-                            <Card.Title>Active</Card.Title>
-                            <Card.Text>
-                                Active {this.state.active}
-                        </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col className="my-2" xs={12} md={3}>
-                    <Card>
-                        <Card.Body>
-                            <Card.Title className="text-red">Recovered</Card.Title>
-                            <Card.Text>
-                               Recovered {this.state.recovered}
-                        </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col className="my-2" xs={12} md={3}>
-                    <Card>
-                        <Card.Body>
-                            <Card.Title>Confirmed</Card.Title>
-                            <Card.Text>
-                                Confirmed {this.state.confirmed}
-                        </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col className="my-2" xs={12} md={3}>
-                    <Card>
-                        <Card.Body>
-                            <Card.Title>Deaths</Card.Title>
-                            <Card.Text>
-                                Deaths {this.state.deaths}
-                        </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
-        )
-    }
+    return (
+        <Row className="my-3">
+            <Col className="my-2" xs={12} md={3}>
+                <Card>
+                    <Card.Body>
+                        <Card.Title>Infected</Card.Title>
+                        <Card.Text>{confirmed.value}</Card.Text>
+                        <Card.Text>Till: {new Date(lastUpdate).toDateString()}</Card.Text>
+                    </Card.Body>
+                </Card>
+            </Col>
+            <Col className="my-2" xs={12} md={3}>
+                <Card>
+                    <Card.Body>
+                        <Card.Title className="text-red">Active</Card.Title>
+                        <Card.Text>{confirmed.value-(recovered.value+deaths.value)}</Card.Text>
+                        <Card.Text>Till: {new Date(lastUpdate).toDateString()}</Card.Text>
+                    </Card.Body>
+                </Card>
+            </Col>
+            <Col className="my-2" xs={12} md={3}>
+                <Card>
+                    <Card.Body>
+                        <Card.Title className="text-red">Recovered</Card.Title>
+                        <Card.Text>{recovered.value}</Card.Text>
+                        <Card.Text>Till: {new Date(lastUpdate).toDateString()}</Card.Text>
+                    </Card.Body>
+                </Card>
+            </Col>
+            <Col className="my-2" xs={12} md={3}>
+                <Card>
+                    <Card.Body>
+                        <Card.Title>Deaths</Card.Title>
+                        <Card.Text>{deaths.value}</Card.Text>
+                        <Card.Text>Till: {new Date(lastUpdate).toDateString()}</Card.Text>
+                    </Card.Body>
+                </Card>
+            </Col>
+        </Row>
+    )
 }
 
-// export default AllCases;
+export default AllCases;

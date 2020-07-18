@@ -1,27 +1,44 @@
 import React from 'react';
-import { BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import './App.css';
 import Heading from './components/Heading/Heading';
 import AllCases from './components/Cases/AllCases';
-import WorldMap from './components/Maps/WorldMap'
 import CountryPicker from './components/CountryTable/CountryPicker';
 import CountryCases from './components/CountryTable/CountryCases';
 import CountryTable from './components/CountryTable/CountryTable';
-import MyMaps from './components/Maps/MyMaps';
+import { fetchCountryData } from './components/api/index';
 
-const App = () => {
-  return(
-    <>
-     <div className="container-fluid">
-          <Heading/>
-          <AllCases/>
-          <CountryPicker/>
-          <MyMaps/>
-          <CountryCases/>
-          <CountryTable/>
-     </div>
-    </>
-  )
+
+class App extends React.Component {
+
+  state = { //constructor invoked on its own
+      data:{},
+      country: '',
+  }
+
+  async componentWillMount(){
+      const fetchedCountry = await fetchCountryData();
+
+      this.setState({ data: fetchedCountry});
+  }
+
+    handleCountryChange = async (country) => {
+      console.log(country)
+      const fetchCountry = await fetchCountryData(country);
+      this.setState({ data: fetchCountry, country:country})
+  }
+
+  render(){
+      const { data,country } = this.state
+      return (
+          <div className="container-fluid">
+              <Heading/>
+              <AllCases/>
+              <CountryPicker handleCountryChange={this.handleCountryChange}/>
+              <CountryCases data={data}/>
+              <CountryTable/>
+          </div>
+      )
+  }
 }
 
 export default App;
