@@ -27,3 +27,8 @@ export const fetchCountryData = async(country) => {
     }
 }
 
+export const fetchCountryJsonData = async(url) => {
+    return fetch(url)
+        .then(res => res.json())
+        .catch(err => console.log(err))
+}

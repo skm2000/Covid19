@@ -12,7 +12,7 @@ class App extends React.Component {
 
   state = { //constructor invoked on its own
       data:{},
-      country: '',
+      country: undefined,
   }
 
   async componentWillMount(){
@@ -35,7 +35,7 @@ class App extends React.Component {
               <AllCases/>
               <CountryPicker handleCountryChange={this.handleCountryChange}/>
               <CountryCases data={data}/>
-              <CountryTable/>
+              {this.state.country != undefined ? <CountryTable data={data}/> : null}
           </div>
       )
   }
