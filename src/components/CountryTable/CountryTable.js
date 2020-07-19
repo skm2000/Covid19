@@ -3,19 +3,25 @@ import { Table, Row, Col } from 'react-bootstrap';
 import {
     fetchCountryJsonData
 } from '../api'
+import StateCharts from '../charts/StateCharts'
 
 export default class CountryTable extends React.Component{
     constructor(props) {
         super()
         this.state = {
-            data: null
+            data: null,
+            state: null,
+            confirmed: null,
+            active: null,
+            recovered: null,
+            deaths: null,
         }
     }
     componentDidUpdate() {
         var url = this.props.data.confirmed.detail
         fetchCountryJsonData(url)
             .then(res => {
-                console.log("Response", res)
+                // console.log("Response", res)
                 this.setState({
                     data: res
                 })
@@ -26,18 +32,35 @@ export default class CountryTable extends React.Component{
         var url = this.props.data.confirmed.detail
         fetchCountryJsonData(url)
             .then(res => {
-                console.log("Response", res)
+                // console.log("Response", res)
                 this.setState({
                     data: res
                 })
             })
 
     }
+    sendData = (state, confirmed, active, recovered, deaths) => () => {
+        console.log(state, confirmed, active, recovered, deaths)
+        var jsonData = {
+            "state": state,
+            "confirmed": confirmed,
+            "active": active,
+            "recovered": recovered,
+            "deaths": deaths,
+        }
+        this.setState({
+            state: state,
+            confirmed: confirmed,
+            active: active,
+            recovered: recovered,
+            deaths: deaths,
+        })
+    }
     render() {
         return (
             <Row className="px-md-2">
                 {/* {console.log("Props", this.props.data.confirmed.detail)} */}
-                {console.log("State :",this.state.data)}
+                {/* {console.log("State :",this.state.data)} */}
                 <Col xs={12} md={6}>
                     <Table className="table table-hover" responsive>
                         <thead>
@@ -52,7 +75,8 @@ export default class CountryTable extends React.Component{
                         <tbody>
                             {this.state.data != null? this.state.data.map((val) =>
                                 <>
-                                    <tr>
+                                    {/* {this.sendData(val.provinceState,val.confirmed,val.active,val.recovered,val.deaths)} */}
+                                    <tr onMouseMove={this.sendData(val.provinceState,val.confirmed,val.active,val.recovered,val.deaths)}>
                                     <th scope="row">{val.provinceState}</th>
                                     <td>{val.confirmed}</td>
                                     <td>{val.active}</td>
@@ -63,6 +87,19 @@ export default class CountryTable extends React.Component{
                             ) : null}
                         </tbody>
                     </Table>
+                </Col>
+                <Col xs={12} md={6}>
+                    {
+                        this.state.state != null ?
+                            <StateCharts state={this.state.state}
+                                confirmed={this.state.confirmed}
+                                recovered={this.state.recovered}
+                                active={this.state.active}
+                                deaths={this.state.deaths}
+                            />
+                            :
+                            null
+                    }
                 </Col>
             </Row>
         )
