@@ -6,6 +6,8 @@ import CountryPicker from './components/CountryTable/CountryPicker';
 import CountryCases from './components/CountryTable/CountryCases';
 import CountryTable from './components/CountryTable/CountryTable';
 import { fetchCountryData,fetchCountryStateData } from './components/api/index';
+import MyMaps from './components/Maps/MyMaps';
+import WorldCharts from './components/charts/WorldCharts';
 
 
 class App extends React.Component {
@@ -37,6 +39,7 @@ class App extends React.Component {
           <div className="container-fluid">
               <Heading/>
               <AllCases/>
+              <MyMaps/>
               <CountryPicker handleCountryChange={this.handleCountryChange}/>
               <CountryCases data={this.state.data}/>
               {this.state.country != undefined ? <CountryTable data={this.state.data}/> : null}

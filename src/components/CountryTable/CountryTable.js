@@ -51,13 +51,15 @@ export default class CountryTable extends React.Component{
                         </thead>
                         <tbody>
                             {this.state.data != null? this.state.data.map((val) =>
-                                <div>
+                                <>
+                                    <tr>
                                     <th scope="row">{val.provinceState}</th>
                                     <td>{val.confirmed}</td>
                                     <td>{val.active}</td>
                                     <td>{val.recovered}</td>
                                     <td>{val.deaths}</td>
-                                </div>
+                                    </tr>
+                                </>
                             ) : null}
                         </tbody>
                     </Table>

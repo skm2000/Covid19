@@ -58,3 +58,35 @@ export const fetchCountryJsonData = async(url) => {
         .then(res => res.json())
         .catch(err => console.log(err))
 }
+
+
+export const fetchCountrie = async () => {
+
+    try {
+      const urlAn = 'https://disease.sh/v2/countries';
+        const  { data }  = await axios.get(`${urlAn}`);
+        return data;
+      } catch (error) {
+        return error;
+      }
+}
+
+
+export const fetchDailyData = async() => {
+    try {
+        const { data } = await axios.get(`${url}/daily`)
+
+        const modifiedData = data.map((dailyData) => ({
+            confirmed: dailyData.confirmed.total,
+            deaths: dailyData.deaths.total,
+            date: dailyData.reportDate,
+            active: dailyData.deltaConfirmedDetail.total,
+            recovered: dailyData.confirmed.total-dailyData.deaths.total,
+        }))
+        return modifiedData
+
+    } catch (error) {
+        
+    }
+}
+
