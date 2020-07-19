@@ -39,7 +39,7 @@ class App extends React.Component {
           <div className="container-fluid">
               <Heading/>
               <AllCases/>
-              {/* <MyMaps/> */}
+              <MyMaps/>
               <CountryPicker handleCountryChange={this.handleCountryChange}/>
               <CountryCases data={this.state.data}/>
               {this.state.country != undefined ? <CountryTable data={this.state.data}/> : null}

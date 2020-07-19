@@ -7,7 +7,7 @@ import StateCharts from '../charts/StateCharts'
 
 export default class CountryTable extends React.Component{
     constructor(props) {
-        super()
+        super(props)
         this.state = {
             data: null,
             state: null,
@@ -28,7 +28,7 @@ export default class CountryTable extends React.Component{
             })
     }
     componentWillMount() {
-        // console.log("Props", this.props.data.confirmed.detail)
+        console.log("Props", this.props.data.confirmed.detail)
         var url = this.props.data.confirmed.detail
         fetchCountryJsonData(url)
             .then(res => {
@@ -58,7 +58,8 @@ export default class CountryTable extends React.Component{
     }
     render() {
         return (
-            <Row className="px-md-2">
+            <div>
+            <Row className="px-md-2" >
                 {/* {console.log("Props", this.props.data.confirmed.detail)} */}
                 {/* {console.log("State :",this.state.data)} */}
                 <Col xs={12} md={6}>
@@ -88,7 +89,7 @@ export default class CountryTable extends React.Component{
                         </tbody>
                     </Table>
                 </Col>
-                <Col xs={12} md={6}>
+                <Col  xs={12} md={6}>
                     {
                         this.state.state != null ?
                             <StateCharts state={this.state.state}
@@ -102,6 +103,7 @@ export default class CountryTable extends React.Component{
                     }
                 </Col>
             </Row>
+            </div>
         )
     }
 }
