@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Bar } from 'react-chartjs-2';
+import { Bar,Doughnut } from 'react-chartjs-2';
 
 const StateCharts = (props) => {
   const barChart = (
@@ -14,13 +13,38 @@ const StateCharts = (props) => {
                           'rgba(0, 0, 255, 0.5)',
                           'rgba(0, 255, 0, 0.5)',
                           'rgba(255, 0, 0, 0.5)',
+                          '#212121'
                       ],
             data:[props.confirmed,props.active,props.recovered,props.deaths]
            }]
          }}
          options={{
                   legend: { display: false},
-                  title: { display:true, text:`Current state in ${props.country}`}
+                  title: { display:true, text:`${props.state}`}
+          }}
+        />
+    ):null
+  )
+
+  const doughnutChart = (
+    props.confirmed?(
+      <Doughnut 
+         data={{
+           labels: ['Confirmed','Active','Recovered','Deaths'],
+           datasets: [{
+            label: 'People',
+                      backgroundColor: [
+                          'rgba(0, 0, 255, 0.5)',
+                          'rgba(0, 255, 0, 0.5)',
+                          'rgba(255, 0, 0, 0.5)',
+                          '#212121'
+                      ],
+            data:[props.confirmed,props.active,props.recovered,props.deaths]
+           }]
+         }}
+         options={{
+                  legend: { display: false},
+                  title: { display:true, text:`${props.state}`}
           }}
         />
     ):null
@@ -28,6 +52,7 @@ const StateCharts = (props) => {
   return (
     <div>
       {barChart}
+      {doughnutChart}
     </div>
   )
 }
