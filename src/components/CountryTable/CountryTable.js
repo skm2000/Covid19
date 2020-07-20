@@ -4,6 +4,7 @@ import {
     fetchCountryJsonData
 } from '../api'
 import StateCharts from '../charts/StateCharts'
+import { height } from '@amcharts/amcharts4/.internal/core/utils/Utils';
 
 export default class CountryTable extends React.Component{
     constructor(props) {
@@ -58,7 +59,6 @@ export default class CountryTable extends React.Component{
     }
     render() {
         return (
-            <div>
             <Row className="px-md-2" >
                 {/* {console.log("Props", this.props.data.confirmed.detail)} */}
                 {/* {console.log("State :",this.state.data)} */}
@@ -103,7 +103,6 @@ export default class CountryTable extends React.Component{
                     }
                 </Col>
             </Row>
-            </div>
         )
     }
 }
