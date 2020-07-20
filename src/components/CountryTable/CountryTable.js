@@ -41,7 +41,7 @@ export default class CountryTable extends React.Component{
 
     }
     sendData = (state, confirmed, active, recovered, deaths) => () => {
-        console.log(state, confirmed, active, recovered, deaths)
+        // console.log(state, confirmed, active, recovered, deaths)
         var jsonData = {
             "state": state,
             "confirmed": confirmed,
