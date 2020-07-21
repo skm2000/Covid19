@@ -24,15 +24,15 @@ const AllCases = () => {
     },[])
 
     return (
-        <Row className="my-3">
+        <Row className="my-3 row">
             <Col className="my-2" xs={12} md={3}>
-                <Card border="primary">
+                <Card style={{borderColor:'rgba(255, 99, 132, 1)'}}>
                     <Card.Body>
                         <Row>
                             <Col xs={6} md={6}>
-                                <Card.Title>Infected</Card.Title>
+                                <Card.Title>Confirmed</Card.Title>
                                 <Card.Text>{confirmed.value}</Card.Text>
-                                <Card.Text>{new Date(lastUpdate).toDateString()}</Card.Text>
+                                {/* <Card.Text>{new Date(lastUpdate).toDateString()}</Card.Text> */}
                             </Col>
                             <Col xs={6} md={6}>
                                 <Card.Text><WorldCharts/></Card.Text>
@@ -48,7 +48,7 @@ const AllCases = () => {
                            <Col xs={6} md={6}>
                                 <Card.Title className="text-red">Active</Card.Title>
                                 <Card.Text>{confirmed.value-(recovered.value+deaths.value)}</Card.Text>
-                                <Card.Text>{new Date(lastUpdate).toDateString()}</Card.Text>
+                                {/* <Card.Text>{new Date(lastUpdate).toDateString()}</Card.Text> */}
                            </Col>
                            <Col xs={6} md={6}>
                                 <Card.Text><WorldChartsActive/></Card.Text>
@@ -59,13 +59,13 @@ const AllCases = () => {
                 </Card>
             </Col>
             <Col className="my-2" xs={12} md={3}>
-                <Card border="success">
+                <Card style={{borderColor:'rgba(75, 192, 192, 1)'}}>
                     <Card.Body>
                     <Row>
                         <Col xs={6} md={6}>
                             <Card.Title className="text-red">Recovered</Card.Title>
                             <Card.Text>{recovered.value}</Card.Text>
-                            <Card.Text>{new Date(lastUpdate).toDateString()}</Card.Text> 
+                            {/* <Card.Text>{new Date(lastUpdate).toDateString()}</Card.Text>  */}
                         </Col>
                         <Col xs={6} md={6}>
                             <Card.Text><WorldChartsRecovered/></Card.Text> 
@@ -79,9 +79,9 @@ const AllCases = () => {
                     <Card.Body>
                         <Row>
                             <Col xs={6} md={6}>
-                                <Card.Title>Deaths</Card.Title>
+                                <Card.Title>Deceased</Card.Title>
                                 <Card.Text>{deaths.value}</Card.Text>
-                                <Card.Text>{new Date(lastUpdate).toDateString()}</Card.Text>
+                                {/* <Card.Text>{new Date(lastUpdate).toDateString()}</Card.Text> */}
                             </Col>
                             <Col xs={6} md={6}>
                                 <Card.Text><WorldChartsDeath/></Card.Text>

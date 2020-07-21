@@ -7,7 +7,7 @@ import CountryCases from './components/CountryTable/CountryCases';
 import CountryTable from './components/CountryTable/CountryTable';
 import { fetchCountryData,fetchCountryStateData } from './components/api/index';
 import MyMaps from './components/Maps/MyMaps';
-
+import { Switch } from 'antd'
 import Leaflet from "./components/Visualizer/Map.js";
 import DateSlider from "./components/Visualizer/DateSlider.js";
 import DataSelector from "./components/Visualizer/DataSelector.js";
@@ -101,18 +101,13 @@ class App extends React.Component {
   render(){
       return (
           <>
-            <div className="container-fluid">
+            <div className="container-fluid px-md-5 py-md-2">
                 <Heading/>
                 <AllCases/>
             </div>
               
             <div className="App">
               <Grid container justify="center"   alignItems="center" spacing={3}>
-                <Grid item xs={8}>
-                    <Typography id="title" variant='h3'>
-                    Visualizing COVID-19 Over Time
-                    </Typography>
-                </Grid>
                 <Grid item xs={10}>
                     <Leaflet
                     infectedData={this.state.infectedData}
@@ -130,8 +125,8 @@ class App extends React.Component {
                     handleDateChange={this.handleDateChange}
                     />
                 </Grid>
-                <Grid item xs={8}>
-                    <DataSelector
+                <Grid item xs={8} container justify="center" alignItems="center">
+                    <DataSelector 
                     toggleInfectedData={this.toggleInfectedData}
                     infectedOn={this.state.infectedOn}
                     toggleRecoveredData={this.toggleRecoveredData}
@@ -140,16 +135,10 @@ class App extends React.Component {
                     deathOn={this.state.deathOn}
                     />
                 </Grid>
-                <Grid item xs={8}>
-                    <Typography id="title" variant='caption'>
-                    This is a depiction of the spread of COVID-19 over time. We rely on the Johns Hopkins CSSE Data Repository, which is
-                    updated once a day at around 23:59 UTC. For that reason, the most recent data our slider allows users to select is
-                    yesterday's.
-                    </Typography>
-                </Grid>
                   </Grid>
               </div>
-              <div className="container-fluid">
+              <div className="container-fluid px-md-5">
+                <Switch/>
                 <CountryPicker handleCountryChange={this.handleCountryChange}/>
                 <CountryCases data={this.state.data}/>
                 {this.state.country !== undefined ? <CountryTable data={this.state.data}/> : null}

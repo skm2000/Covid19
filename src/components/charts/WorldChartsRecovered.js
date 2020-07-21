@@ -23,7 +23,7 @@ const WorldChartsRecovered = () => {
                     labels:dailyData.map(( { date }) => date),
                     datasets: [{
                         data: dailyData.map(( { recovered }) => recovered),
-                        borderColor: '#00c853',
+                        borderColor: 'rgba(75, 192, 192, 1)',
                         backgroundColor: 'white',
                         pointRadius: 1,
                     }]

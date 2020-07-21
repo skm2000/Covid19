@@ -24,7 +24,7 @@ const WorldCharts = () => {
                     labels:dailyData.map(( { date }) => date),
                     datasets: [{
                         data: dailyData.map(( { confirmed }) => confirmed),
-                        borderColor: '#673ab7',
+                        borderColor: 'rgba(255, 99, 132, 1)',
                         backgroundColor: 'white',
                         pointRadius: 1,
                     }]

@@ -23,7 +23,7 @@ const WorldChartsDeath = () => {
                     labels:dailyData.map(( { date }) => date),
                     datasets: [{
                         data: dailyData.map(( { deaths }) => deaths),
-                        borderColor: '#00bfa5',
+                        borderColor: 'rgba(102, 102, 102, 0.7)',
                         backgroundColor: 'white',
                         pointRadius: 1,
                     }]

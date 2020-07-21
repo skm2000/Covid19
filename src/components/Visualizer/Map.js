@@ -9,7 +9,7 @@ export default class Leaflet extends React.Component {
     super(props);
   }
   render() {
-    const position = [35, -40];
+    const position = [20, 10];
     const zoom = 2;
     return (
       <Map center={position} zoom={zoom}>
@@ -18,10 +18,10 @@ export default class Leaflet extends React.Component {
           attribution={'&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}
         />
         {this.props.infectedOn &&
-          <MyCircles data={this.props.infectedData} date={this.props.date} color="red"/>
+          <MyCircles data={this.props.infectedData} date={this.props.date} color="rgba(255, 99, 132, 1)"/>
         }
         {this.props.recoveredOn &&
-          <MyCircles data={this.props.recoveredData} date={this.props.date} color="green"/>
+          <MyCircles data={this.props.recoveredData} date={this.props.date} color="rgba(75, 192, 192, 1)"/>
         }
         {this.props.deathOn &&
           <MyCircles data={this.props.deathData} date={this.props.date} color="black"/>
@@ -43,12 +43,16 @@ const MyCircles = (props) => {
             key={i}
             center={[row["Lat"], row["Long"]]}
             radius={1000 * Math.sqrt(row[props.date])}
-            fillOpacity={0.5}
+            fillOpacity={0.8}
             fillColor={props.color}
             stroke={false}
-          />)
+          />
+          )
         }
       }
     )
   );
 }
+
+// onMouseOut={(e) => e.target.setStyle({fillColor: 'blue'})}
+// onMouseOver={(e) => e.target.setStyle({fillColor: 'green'})}

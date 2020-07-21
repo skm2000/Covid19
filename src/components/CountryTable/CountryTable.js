@@ -59,14 +59,14 @@ export default class CountryTable extends React.Component{
     }
     render() {
         return (
-            <Row className="px-md-2" >
+            <Row className="px-md-2">
                 {/* {console.log("Props", this.props.data.confirmed.detail)} */}
                 {/* {console.log("State :",this.state.data)} */}
-                <Col xs={12} md={6}>
-                    <Table className="table table-hover" responsive>
+                <Col xs={12} md={6} style={{overflowY:'scroll',maxHeight:'400px',scrollbarColor:'pink grey'}}>
+                    <Table className="table table-hover table-fixed" responsive>
                         <thead>
                             <tr>
-                                <th>States</th>
+                                <th>States/Province</th>
                                 <th>Confirmed</th>
                                 <th>Active</th>
                                 <th>Recovered</th>
