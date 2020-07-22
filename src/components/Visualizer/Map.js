@@ -1,13 +1,8 @@
 import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 
-<<<<<<< HEAD
 import { Map, Circle, TileLayer, Popup } from 'react-leaflet';
-
-=======
-import { Map, Circle, TileLayer } from 'react-leaflet';
 // import {CodeGrid} from 'codegrid-js'
->>>>>>> 46695f607e858280c86657ec229ccb74222555e0
 
 export default class Leaflet extends React.Component {
   constructor(props) {
@@ -20,13 +15,8 @@ export default class Leaflet extends React.Component {
   }
 
   render() {
-<<<<<<< HEAD
-    const position = [20, 10];
-    const zoom = 3;
-=======
     const position = [-8.8143, 13.226];
     const zoom = 2;
->>>>>>> 46695f607e858280c86657ec229ccb74222555e0
     return (
       <Map center={position}
         zoom={zoom}

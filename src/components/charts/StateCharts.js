@@ -21,6 +21,8 @@ const StateCharts = (props) => {
          options={{
                   legend: { display: false},
                   title: { display:true, text:`${props.state}`},
+                  responsive: true,
+                  maintainAspectRatio: false,
                   scales: {
                     xAxes: [{
                         gridLines: {
@@ -80,9 +82,9 @@ const StateCharts = (props) => {
   //   ):null
   // )
   return (
-    <>
+    <div style={{minHeight:'400px'}}>
       {barChart}
-    </>
+    </div>
   )
 }
 

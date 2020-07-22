@@ -2,6 +2,8 @@ import React,{useState,useEffect} from 'react';
 import {fetchNewsData} from '../api/index'
 import { render } from '@testing-library/react';
 
+import { Table, Row, Col } from 'react-bootstrap';
+
 var isoCountries = {
     'AF' : 'Afghanistan',
     'AX' : 'Aland Islands',
@@ -271,7 +273,31 @@ const NewsCountry = (props) => {
 
 
     return(
-    <h1>{console.log(news)}</h1>
+    <>
+    {console.log(news)}
+        <Table className="table table-fixed table-hover" responsive>
+                        <thead>
+                            <tr>
+    <th>News of {props.country}</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {news.length != 0? news.map((val) =>
+                                <>
+                                <tr>
+                                    <th scope="row" style={{fontWeight:'normal'}} ><a href={val.url}>{val.title}</a></th>
+                                    
+                                </tr>
+                                </>
+                            ) : <tr>
+                            <th scope="row" style={{fontWeight:'normal'}} >We trying to get news from {props.country} </th>
+                            
+                        </tr>}
+                        </tbody>
+                    </Table>
+      
+    </>
     )
 }
 export default NewsCountry;

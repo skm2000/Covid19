@@ -14,11 +14,8 @@ import DataSelector from "./components/Visualizer/DataSelector.js";
 import Papa from "papaparse";
 import axios from "axios";
 import Grid from '@material-ui/core/Grid';
-<<<<<<< HEAD
-=======
 import Typography from '@material-ui/core/Typography';
 import NewsCountry from './components/Cases/NewsCountry';
->>>>>>> 46695f607e858280c86657ec229ccb74222555e0
 
 
 const infectedUrl = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
@@ -146,7 +143,7 @@ class App extends React.Component {
               <CountryCases country={this.state.country} data={this.state.data} />
                 {this.state.country !== undefined ? <CountryCumulative country={this.state.country}/> : null}
                 {this.state.country !== undefined ? <CountryTable country={this.state.country} data={this.state.data}/> : null}
-                {this.state.country !== undefined ? <NewsCountry country={this.state.country}/> : null }
+                {/* {this.state.country !== undefined ? <NewsCountry country={this.state.country}/> : null } */}
             </div>
          </>
       )

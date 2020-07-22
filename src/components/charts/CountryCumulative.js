@@ -3,6 +3,7 @@ import {fetchCummulativeCountry} from '../api/index'
 import { Line } from 'react-chartjs-2'
 import { Col, Row } from 'react-bootstrap'
 // import CountUp from 'react-countup'
+import NewsCountry from '../Cases/NewsCountry'
 
 const CountryCumulative = (props) => {
     const [dailyData, setDailyData] = useState([])
@@ -211,7 +212,7 @@ const CountryCumulative = (props) => {
                         // text: ['Confirmed','Active','Recovered','Deceased']
                     },
                     responsive: true,
-                    aspectRatio: 0,
+                    maintainAspectRatio: false,
                     scales: {
                     xAxes: [{
                         gridLines: {
@@ -228,7 +229,8 @@ const CountryCumulative = (props) => {
                         ticks: {
                             display: true //this will remove only the label
                         }   
-                    }]
+                    }],
+                    
                 },
                 }}
             />
@@ -242,19 +244,19 @@ const CountryCumulative = (props) => {
         //     {lineChartDeath}
         //     {/* </h1> */}
         // </div>
-        <Row className="pt-3 pb-5">
+        <Row className="pt-3 pb-5" style={{minHeight:'500px'}}>
             <Col md={6} sm={12}>
                 {lineChartConfirmed}
             </Col>
-            {/* <Col md={3} sm={6}>
-                {lineChartActive}
+            <Col md={6} sm={12}>
+                <NewsCountry country={props.country} />
             </Col>
-            <Col md={3} sm={6}>
+            {/* <Col md={3} sm={6}>
                 {lineChartRecovered}
             </Col>
             <Col md={3} sm={6}>
                 {lineChartDeath}
-            </Col> */}
+            </Col>  */}
        </Row>
     );
     
