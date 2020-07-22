@@ -23,7 +23,7 @@ const WorldChartsActive = () => {
                     labels:dailyData.map(( { date }) => date),
                     datasets: [{
                         data: dailyData.map(( { active }) => active),
-                        borderColor: '#e53935',
+                        borderColor: '#ffce56',
                         backgroundColor: 'white',
                         pointRadius: 1,
                     }]

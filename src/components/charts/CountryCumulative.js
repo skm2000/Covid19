@@ -163,20 +163,22 @@ const CountryCumulative = (props) => {
                             // console.log(Recovered);
                             return confirmed
                         }),
-                        borderColor: 'rgba(100, 123, 192, 1)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
                         // backgroundColor: 'rgba(100, 123, 192, 1)',
                         pointRadius: 1,
-                        label:'Confirmed'
+                        label:'Confirmed',
+                        fill: false
                     },
                     {
                         data: dailyData.map(({ active }) => {
                             // console.log(active);
                             return active
                         }),
-                        borderColor: '#EC4849',
+                        borderColor: '#ffce56',
                         // backgroundColor: '#e53935',
                         pointRadius: 1,
-                        label:'Active'
+                        label:'Active',
+                        fill: false
                         },
                         {
                             data: dailyData.map(({ recovered }) => {
@@ -186,17 +188,19 @@ const CountryCumulative = (props) => {
                             borderColor: 'rgba(75, 192, 192, 1)',
                             // backgroundColor: 'rgba(75, 192, 192, 1)',
                             pointRadius: 1,
-                            label:'Recovered'
+                            label:'Recovered',
+                            fill: false
                         },
                         {
                             data: dailyData.map(({ deaths }) => {
                                 // console.log(Recovered);
                                 return deaths
                             }),
-                            borderColor: 'rgba(102, 102, 102, 0.7)',
+                            borderColor: '#616161',
                             // backgroundColor: 'rgba(102, 102, 102, 0.7)',
                             pointRadius: 1,
-                            label:'Deceased'
+                            label:'Deceased',
+                            fill: false
                         }
                     ]
                 }}

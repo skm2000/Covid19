@@ -7,6 +7,12 @@ import WorldChartsDeath from '../charts/WorldChartsDeath';
 import WorldChartsRecovered from '../charts/WorldChartsRecovered';
 
 const AllCases = () => {
+    const formatNumber = (num)  => {
+        // console.log(num);
+        num = num + " ";
+        // return num.toString();
+        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    }
     const [confirmed,setConfirmed] = useState(0);
     const [recovered,setRecovered] = useState(0);
     const [deaths,setDeaths] = useState(0);
@@ -26,12 +32,12 @@ const AllCases = () => {
     return (
         <Row className="my-3 row">
             <Col className="my-2" xs={12} md={3}>
-                <Card style={{borderColor:'rgba(255, 99, 132, 1)'}}>
+                <Card className="shadow-sm p-2 mb-1 bg-white rounded" style={{color:'rgba(255, 99, 132, 1)'}}>
                     <Card.Body>
                         <Row>
                             <Col xs={6} md={6}>
                                 <Card.Title>Confirmed</Card.Title>
-                                <Card.Text>{confirmed.value}</Card.Text>
+                                <Card.Text>{formatNumber(confirmed.value)}</Card.Text>
                                 {/* <Card.Text>{new Date(lastUpdate).toDateString()}</Card.Text> */}
                             </Col>
                             <Col xs={6} md={6}>
@@ -42,12 +48,12 @@ const AllCases = () => {
                 </Card>
             </Col>
             <Col className="my-2" xs={12} md={3}>
-                <Card border="danger">
+                <Card className="shadow-sm p-2 mb-1 bg-white rounded" style={{color:'#ffce56'}}>
                     <Card.Body>
                        <Row>
                            <Col xs={6} md={6}>
                                 <Card.Title className="text-red">Active</Card.Title>
-                                <Card.Text>{confirmed.value-(recovered.value+deaths.value)}</Card.Text>
+                                <Card.Text>{formatNumber(confirmed.value-(recovered.value+deaths.value))}</Card.Text>
                                 {/* <Card.Text>{new Date(lastUpdate).toDateString()}</Card.Text> */}
                            </Col>
                            <Col xs={6} md={6}>
@@ -59,12 +65,12 @@ const AllCases = () => {
                 </Card>
             </Col>
             <Col className="my-2" xs={12} md={3}>
-                <Card style={{borderColor:'rgba(75, 192, 192, 1)'}}>
+                <Card className="shadow-sm p-2 mb-1 bg-white rounded" style={{color:'rgba(75, 192, 192, 1)'}}>
                     <Card.Body>
                     <Row>
                         <Col xs={6} md={6}>
                             <Card.Title className="text-red">Recovered</Card.Title>
-                            <Card.Text>{recovered.value}</Card.Text>
+                            <Card.Text>{formatNumber(recovered.value)}</Card.Text>
                             {/* <Card.Text>{new Date(lastUpdate).toDateString()}</Card.Text>  */}
                         </Col>
                         <Col xs={6} md={6}>
@@ -75,12 +81,12 @@ const AllCases = () => {
                 </Card>
             </Col>
             <Col className="my-2" xs={12} md={3}>
-                <Card border="secondary">
+                <Card className="shadow-sm p-2 mb-1 bg-white rounded"  style={{color:'#616161'}}>
                     <Card.Body>
                         <Row>
                             <Col xs={6} md={6}>
                                 <Card.Title>Deceased</Card.Title>
-                                <Card.Text>{deaths.value}</Card.Text>
+                                <Card.Text>{formatNumber(deaths.value)}</Card.Text>
                                 {/* <Card.Text>{new Date(lastUpdate).toDateString()}</Card.Text> */}
                             </Col>
                             <Col xs={6} md={6}>

@@ -86,7 +86,7 @@ class App extends React.Component {
     async componentWillMount(){
         const fetchedCountry = await fetchCountryData();
         const fetchStateData = await fetchCountryStateData();
-        console.log(fetchStateData)
+        console.log(fetchStateData);
 
         this.setState({ data: fetchedCountry});
         this.setState({ stateCountry: fetchStateData});

@@ -4,7 +4,7 @@ import {
     fetchCountryJsonData
 } from '../api'
 import StateCharts from '../charts/StateCharts'
-import { height } from '@amcharts/amcharts4/.internal/core/utils/Utils';
+import '../CountryTable/Country.css'
 
 export default class CountryTable extends React.Component{
     constructor(props) {
@@ -18,16 +18,16 @@ export default class CountryTable extends React.Component{
             deaths: null,
         }
     }
-    componentDidUpdate() {
-        var url = this.props.data.confirmed.detail
-        fetchCountryJsonData(url)
-            .then(res => {
-                // console.log("Response", res)
-                this.setState({
-                    data: res
-                })
-            })
-    }
+    // componentWillUpdate() {
+    //     var url = this.props.data.confirmed.detail
+    //     fetchCountryJsonData(url)
+    //         .then(res => {
+    //             // console.log("Response", res)
+    //             this.setState({
+    //                 data: res
+    //             })
+    //         })
+    // }
     componentWillMount() {
         console.log("Props", this.props.data.confirmed.detail)
         var url = this.props.data.confirmed.detail
@@ -63,7 +63,7 @@ export default class CountryTable extends React.Component{
                 {/* {console.log("Props", this.props.data.confirmed.detail)} */}
                 {/* {console.log("State :",this.state.data)} */}
                 <Col xs={12} md={6} style={{overflowY:'scroll',maxHeight:'400px',scrollbarColor:'pink grey'}}>
-                    <Table className="table table-hover table-fixed" responsive>
+                    <Table className="table table-fixed table-hover" responsive>
                         <thead>
                             <tr>
                                 <th>States/Province</th>
@@ -78,7 +78,7 @@ export default class CountryTable extends React.Component{
                                 <>
                                     {/* {this.sendData(val.provinceState,val.confirmed,val.active,val.recovered,val.deaths)} */}
                                     <tr onMouseMove={this.sendData(val.provinceState,val.confirmed,val.active,val.recovered,val.deaths)}>
-                                    <th scope="row">{val.provinceState}</th>
+                                    <th scope="row" style={{fontWeight:'normal'}}>{val.provinceState}</th>
                                     <td>{val.confirmed}</td>
                                     <td>{val.active}</td>
                                     <td>{val.recovered}</td>
