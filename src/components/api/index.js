@@ -4,8 +4,8 @@ const url = 'https://covid19.mathdro.id/api';
 // search for countries
 export const fetchCountries = async() => {
     try {
-        // const md = await axios.get(`${url}/countries/india/confirmed`);
-        // console.log(md)
+        const md = await axios.get(`${url}/countries/india/confirmed`);
+        console.log(md)
         const { data: { countries }} = await axios.get(`${url}/countries`)
         return countries.map((country) => country.name)
     } catch (error) {
@@ -75,7 +75,7 @@ export const fetchCountrie = async () => {
 export const fetchDailyData = async() => {
     try {
         const { data } = await axios.get(`${url}/daily`)
-
+    
         const modifiedData = data.map((dailyData) => ({
             confirmed: dailyData.confirmed.total,
             deaths: dailyData.deaths.total,
@@ -90,3 +90,23 @@ export const fetchDailyData = async() => {
     }
 }
 
+export const fetchCummulativeCountry = (country) => {
+    console.log(`https://api.covid19api.com/total/country/${country}`)
+    return fetch(`https://api.covid19api.com/total/country/${country}`)
+        .then(data => {
+            return data.json()
+        })
+        .then(res => {
+            // console.log(res)
+            const modifiedData = res.map((dailyData) => ({
+                confirmed: dailyData.Confirmed,
+                deaths: dailyData.Deaths,
+                date: dailyData.Date,
+                active: dailyData.Active,
+                recovered: dailyData.Recovered
+            }))
+            console.log("modifiedData:",modifiedData)
+            return modifiedData;
+        })
+        .catch(err => console.log(err))
+}

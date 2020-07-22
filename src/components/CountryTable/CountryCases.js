@@ -2,14 +2,14 @@ import React from 'react'
 import CountUp from 'react-countup';
 import { Row,Col,Card } from 'react-bootstrap';
 
-const CountryCases = ({ data: { confirmed, recovered, deaths } }) => {
+const CountryCases = ({ data: { confirmed, recovered, deaths },country}) => {
     if (!confirmed) {
         return 'Loading...';
     }
     return (
         <Row className="my-3">
             <Col className="my-2" xs={12} md={3}>
-                <Card style={{borderColor:'rgba(255, 99, 132, 1)'}}>
+                <Card style={{ borderColor: 'rgba(255, 99, 132, 1)' }}>
                     <Card.Body>
                         <Card.Title>Confirmed</Card.Title>
                         <Card.Text><CountUp start={0} end={confirmed.value} duration={2.75} separator="," /></Card.Text>

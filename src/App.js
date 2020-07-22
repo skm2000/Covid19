@@ -5,6 +5,7 @@ import AllCases from './components/Cases/AllCases';
 import CountryPicker from './components/CountryTable/CountryPicker';
 import CountryCases from './components/CountryTable/CountryCases';
 import CountryTable from './components/CountryTable/CountryTable';
+import  CountryCumulative  from './components/charts/CountryCumulative'
 import { fetchCountryData,fetchCountryStateData } from './components/api/index';
 import MyMaps from './components/Maps/MyMaps';
 import { Switch } from 'antd'
@@ -119,12 +120,6 @@ class App extends React.Component {
                     date={this.state.date}
                     />
                 </Grid>
-                <Grid item xs={8}>
-                    {this.state.date}
-                    <DateSlider
-                    handleDateChange={this.handleDateChange}
-                    />
-                </Grid>
                 <Grid item xs={8} container justify="center" alignItems="center">
                     <DataSelector 
                     toggleInfectedData={this.toggleInfectedData}
@@ -135,12 +130,19 @@ class App extends React.Component {
                     deathOn={this.state.deathOn}
                     />
                 </Grid>
+                <Grid item xs={8}>
+                    {this.state.date}
+                    <DateSlider
+                    handleDateChange={this.handleDateChange}
+                    />
+                </Grid>
                   </Grid>
               </div>
               <div className="container-fluid px-md-5">
                 <Switch/>
                 <CountryPicker handleCountryChange={this.handleCountryChange}/>
-                <CountryCases data={this.state.data}/>
+            <CountryCases country={this.state.country} data={this.state.data} />
+                {this.state.country !== undefined ? <CountryCumulative country={this.state.country}/> : null}
                 {this.state.country !== undefined ? <CountryTable data={this.state.data}/> : null}
             </div>
          </>
