@@ -2,17 +2,28 @@ import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 
 import { Map, Circle, TileLayer } from 'react-leaflet';
-
+// import {CodeGrid} from 'codegrid-js'
 
 export default class Leaflet extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  handleChange = (e) => {
+    const { lat, lng } = e.latlng;
+    console.log(lat, lng)    
+  }
+
   render() {
-    const position = [20, 10];
+    const position = [-8.8143, 13.226];
     const zoom = 2;
     return (
-      <Map center={position} zoom={zoom}>
+      <Map center={position}
+        zoom={zoom}
+        minZoom={2}
+        maxZoom={10}
+        onclick={this.handleChange}
+      >
         <TileLayer
           url={"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"}
           attribution={'&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}
@@ -46,6 +57,7 @@ const MyCircles = (props) => {
             fillOpacity={0.8}
             fillColor={props.color}
             stroke={false}
+            // onmouseover={(e)=>e.target.setStyle({fillColor:'green'})}
           />
           )
         }
