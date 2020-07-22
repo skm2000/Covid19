@@ -11,7 +11,7 @@ const StateCharts = (props) => {
             label: 'People',
                       backgroundColor: [
                           'rgba(255, 99, 132, 1)',
-                          '#36A2EB',
+                          '#ffce56',
                           'rgba(75, 192, 192, 1)',
                           'rgba(102, 102, 102, 0.7)'
                       ],

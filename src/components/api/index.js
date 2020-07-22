@@ -54,9 +54,23 @@ export const fetchCountryData = async(country) => {
 }
 
 export const fetchCountryJsonData = async(url) => {
-    return fetch(url)
-        .then(res => res.json())
-        .catch(err => console.log(err))
+    try{
+        const data = await axios.get(url);
+        console.log(data.data);
+        return data.data;
+    }
+    catch(error){
+        console.log(error);
+    }
+    // return fetch(url)
+    //     .then(res => {
+    //         // console.log("JDATA", res)
+    //         return res.json()})
+    //     .then(data=>{
+    //         console.log("DATA", data)
+    //         return data
+    //     })
+    //     .catch(err => console.log(err))
 }
 
 
@@ -109,4 +123,16 @@ export const fetchCummulativeCountry = (country) => {
             return modifiedData;
         })
         .catch(err => console.log(err))
+}
+
+
+export const fetchNewsData = async(code) => {
+    try {
+        
+        const data = await axios.get(`https://covidnewsapi.herokuapp.com/country/?queryCountry=${code}`)
+        // console.log(data.data.articles);
+        return data.data.articles;
+    } catch (error) {
+        console.log(error)
+    }
 }
