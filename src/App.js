@@ -7,8 +7,6 @@ import CountryCases from './components/CountryTable/CountryCases';
 import CountryTable from './components/CountryTable/CountryTable';
 import  CountryCumulative  from './components/charts/CountryCumulative'
 import { fetchCountryData,fetchCountryStateData } from './components/api/index';
-import MyMaps from './components/Maps/MyMaps';
-import { Switch } from 'antd'
 import Leaflet from "./components/Visualizer/Map.js";
 import DateSlider from "./components/Visualizer/DateSlider.js";
 import DataSelector from "./components/Visualizer/DataSelector.js";
@@ -16,7 +14,6 @@ import DataSelector from "./components/Visualizer/DataSelector.js";
 import Papa from "papaparse";
 import axios from "axios";
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 
 
 const infectedUrl = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
@@ -49,6 +46,7 @@ class App extends React.Component {
         const parsedDeathData = App.pullAndParseUrl(deathUrl);
     
         console.log(parsedInfectedData);
+        console.log(parsedInfectedData.value);
     
         parsedInfectedData.then(result => {
           this.setState({ infectedData: result.data });
@@ -139,9 +137,8 @@ class App extends React.Component {
                   </Grid>
               </div>
               <div className="container-fluid px-md-5">
-                <Switch/>
-                <CountryPicker handleCountryChange={this.handleCountryChange}/>
-            <CountryCases country={this.state.country} data={this.state.data} />
+              <CountryPicker handleCountryChange={this.handleCountryChange}/>
+              <CountryCases country={this.state.country} data={this.state.data} />
                 {this.state.country !== undefined ? <CountryCumulative country={this.state.country}/> : null}
                 {this.state.country !== undefined ? <CountryTable data={this.state.data}/> : null}
             </div>

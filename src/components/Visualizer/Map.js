@@ -1,7 +1,7 @@
 import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 
-import { Map, Circle, TileLayer } from 'react-leaflet';
+import { Map, Circle, TileLayer, Popup } from 'react-leaflet';
 
 
 export default class Leaflet extends React.Component {
@@ -10,7 +10,7 @@ export default class Leaflet extends React.Component {
   }
   render() {
     const position = [20, 10];
-    const zoom = 2;
+    const zoom = 3;
     return (
       <Map center={position} zoom={zoom}>
         <TileLayer
@@ -31,6 +31,7 @@ export default class Leaflet extends React.Component {
 }
 
 const MyCircles = (props) => {
+  console.log(props.data);
   return (
     props.data.map((row, i) => {
       if (row[props.date] <= 0) {
@@ -46,7 +47,11 @@ const MyCircles = (props) => {
             fillOpacity={0.8}
             fillColor={props.color}
             stroke={false}
-          />
+          >
+          <Popup onMouseOver={(e) => e.target.setStyle({fillColor: 'green'})}>
+              <h4>{row[props.date]}</h4>
+          </Popup>
+          </Circle>
           )
         }
       }
