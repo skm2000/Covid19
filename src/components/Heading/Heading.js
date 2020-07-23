@@ -5,7 +5,7 @@ import '../Heading/heading.css'
 
 const Heading = () => {
     return (
-        <div style={{color: '#212121'}}>
+        <div style={{color: '#616161'}}>
               <Col className="example" xs={12}><b>COVID-19 GLOBAL</b>
               </Col>
         </div>

@@ -13,7 +13,7 @@ const StateCharts = (props) => {
                           'rgba(255, 99, 132, 1)',
                           '#ffce56',
                           'rgba(75, 192, 192, 1)',
-                          'rgba(102, 102, 102, 0.7)'
+                          '#616161'
                       ],
             data:[props.confirmed,props.active,props.recovered,props.deaths]
            }]

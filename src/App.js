@@ -103,6 +103,7 @@ class App extends React.Component {
             <div className="container-fluid px-md-5 py-md-2">
                 <Heading/>
                 <AllCases/>
+              <div className="App">
               <Grid container justify="center"   alignItems="center" spacing={3} >
                 <Grid item xs={10}>
                     <Leaflet
@@ -115,7 +116,7 @@ class App extends React.Component {
                     date={this.state.date}
                     />
                 </Grid>
-                <Grid item xs={8} container justify="center" alignItems="center">
+                <Grid  >
                     <DataSelector 
                     toggleInfectedData={this.toggleInfectedData}
                     infectedOn={this.state.infectedOn}
@@ -132,6 +133,7 @@ class App extends React.Component {
                     />
                 </Grid>
                   </Grid>
+                  </div>
             </div>
               
               <div className="container-fluid px-md-5">

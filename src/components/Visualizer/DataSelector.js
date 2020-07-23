@@ -12,15 +12,15 @@ export default class DataSelector extends React.Component {
 		<FormGroup row>
 	      <FormControlLabel
 	        control={<Checkbox checked={this.props.infectedOn} onChange={this.props.toggleInfectedData} className="checkedA" style={{color:'rgba(255, 99, 132, 1)'}}/>}
-	        label="Infected"
+	        label="Confirmed"
 	      />
 	      <FormControlLabel
 	        control={<Checkbox checked={this.props.recoveredOn} onChange={this.props.toggleRecoveredData} className="checkedB" style={{color:'rgba(75, 192, 192, 1)'}}/>}
 	        label="Recovered"
 	      />
 	      <FormControlLabel
-	        control={<Checkbox checked={this.props.deathOn} onChange={this.props.toggleDeathData} name="checkedC" style={{color:'black'}}/>}
-	        label="Dead"
+	        control={<Checkbox checked={this.props.deathOn} onChange={this.props.toggleDeathData} name="checkedC" style={{color:'#616161'}}/>}
+	        label="Deceased"
 	      />
 	    </FormGroup>
     )

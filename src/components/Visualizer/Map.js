@@ -35,7 +35,7 @@ export default class Leaflet extends React.Component {
           <MyCircles data={this.props.recoveredData} date={this.props.date} color="rgba(75, 192, 192, 1)" condition="Recovered" colorName=""/>
         }
         {this.props.deathOn &&
-          <MyCircles data={this.props.deathData} date={this.props.date} color="black" condition="Deceased"/>
+          <MyCircles data={this.props.deathData} date={this.props.date} color="#616161" condition="Deceased"/>
         }
       </Map>)
   }
