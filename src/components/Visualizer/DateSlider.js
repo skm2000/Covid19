@@ -60,9 +60,9 @@ export default class DateSlider extends React.Component {
     ];
     return (
       <>
-        <Typography id="continuous-slider" gutterBottom>
+        {/* <Typography id="continuous-slider" gutterBottom>
           Days since January 22nd, 2020:
-    </Typography>
+    </Typography> */}
         <br />
         <br />
         <Slider

@@ -14,7 +14,7 @@ import DataSelector from "./components/Visualizer/DataSelector.js";
 import Papa from "papaparse";
 import axios from "axios";
 import Grid from '@material-ui/core/Grid';
-// import Typography from '@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography';
 // import NewsCountry from './components/Cases/NewsCountry';
 
 
@@ -100,10 +100,9 @@ class App extends React.Component {
   render(){
       return (
           <>
-            <div className="container-fluid px-md-5 py-md-2">
+            <div className="container-fluid px-md-5 py-md-0">
                 <Heading/>
                 <AllCases/>
-              <div className="App">
               <Grid container justify="center"   alignItems="center" spacing={3} >
                 <Grid item xs={10}>
                     <Leaflet
@@ -116,7 +115,7 @@ class App extends React.Component {
                     date={this.state.date}
                     />
                 </Grid>
-                <Grid  >
+                <Grid container justify="center"   alignItems="center" >
                     <DataSelector 
                     toggleInfectedData={this.toggleInfectedData}
                     infectedOn={this.state.infectedOn}
@@ -126,15 +125,19 @@ class App extends React.Component {
                     deathOn={this.state.deathOn}
                     />
                 </Grid>
-                <Grid item xs={8}>
-                    {this.state.date}
-                    <DateSlider
+                {/* <Grid item xs={8} container justify="center"   alignItems="center">
+                
+                </Grid> */}
+                <Grid item xs={8} container justify="center" >
+                  <h5>Date:  {this.state.date}</h5>
+                  <DateSlider
                     handleDateChange={this.handleDateChange}
-                    />
+                  />
+                  
+                    
                 </Grid>
                   </Grid>
                   </div>
-            </div>
               
               <div className="container-fluid px-md-5">
               <CountryPicker handleCountryChange={this.handleCountryChange}/>
