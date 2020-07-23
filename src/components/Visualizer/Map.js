@@ -11,11 +11,11 @@ export default class Leaflet extends React.Component {
 
   handleChange = (e) => {
     const { lat, lng } = e.latlng;
-    console.log(lat, lng)    
+    // console.log(lat, lng)    
   }
 
   render() {
-    const position = [-8.8143, 13.226];
+    const position = [24.8143, 10.226];
     const zoom = 2;
     return (
       <Map center={position}
@@ -29,20 +29,20 @@ export default class Leaflet extends React.Component {
           attribution={'&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}
         />
         {this.props.infectedOn &&
-          <MyCircles data={this.props.infectedData} date={this.props.date} color="rgba(255, 99, 132, 1)"/>
+          <MyCircles data={this.props.infectedData} date={this.props.date} color="rgba(255, 99, 132, 1)" condition="Confirmed" colorName=""/>
         }
         {this.props.recoveredOn &&
-          <MyCircles data={this.props.recoveredData} date={this.props.date} color="rgba(75, 192, 192, 1)"/>
+          <MyCircles data={this.props.recoveredData} date={this.props.date} color="rgba(75, 192, 192, 1)" condition="Recovered" colorName=""/>
         }
         {this.props.deathOn &&
-          <MyCircles data={this.props.deathData} date={this.props.date} color="black"/>
+          <MyCircles data={this.props.deathData} date={this.props.date} color="black" condition="Deceased"/>
         }
       </Map>)
   }
 }
 
 const MyCircles = (props) => {
-  console.log(props.data);
+  // console.log(props.data);
   return (
     props.data.map((row, i) => {
       if (row[props.date] <= 0) {
@@ -59,8 +59,13 @@ const MyCircles = (props) => {
             fillColor={props.color}
             stroke={false}
           >
-          <Popup onMouseOver={(e) => e.target.setStyle({fillColor: 'green'})}>
-              <h4>{row[props.date]}</h4>
+          <Popup>
+            
+             <h5 style={{color:`${props.color}`}}>{props.data[i]['Country/Region']}</h5>
+             <h6 style={{color:`${props.color}`}}>{props.condition} : {row[props.date]}</h6>
+    
+              
+              {/* {console.log("ff",props.data[i]['Country/Region'])} */}
           </Popup>
           </Circle>
           )

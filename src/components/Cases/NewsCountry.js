@@ -236,7 +236,7 @@ var isoCountries = {
     'UA' : 'Ukraine',
     'AE' : 'United Arab Emirates',
     'GB' : 'United Kingdom',
-    'US' : 'United States',
+    'US' : 'US',
     'UM' : 'United States Outlying Islands',
     'UY' : 'Uruguay',
     'UZ' : 'Uzbekistan',
@@ -262,7 +262,7 @@ function getKeyByValue(isoCountries, value) {
 }
 
 const NewsCountry = (props) => {
-    console.log("Props country:", props.country);
+    // console.log("Props country:", props.country);
     const [news,setNews] = useState([]);
     useEffect(() =>{
         const fetchAPI = async () => {
@@ -273,8 +273,8 @@ const NewsCountry = (props) => {
 
 
     return(
-    <>
-    {console.log(news)}
+    <div style={{paddingTop:'10px'}}>
+    {/* {console.log(news)} */}
         <Table className="table table-fixed table-hover" responsive>
                         <thead>
                             <tr>
@@ -297,7 +297,7 @@ const NewsCountry = (props) => {
                         </tbody>
                     </Table>
       
-    </>
+    </div>
     )
 }
 export default NewsCountry;

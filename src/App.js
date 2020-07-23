@@ -14,8 +14,8 @@ import DataSelector from "./components/Visualizer/DataSelector.js";
 import Papa from "papaparse";
 import axios from "axios";
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import NewsCountry from './components/Cases/NewsCountry';
+// import Typography from '@material-ui/core/Typography';
+// import NewsCountry from './components/Cases/NewsCountry';
 
 
 const infectedUrl = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
@@ -46,9 +46,7 @@ class App extends React.Component {
         const parsedInfectedData = App.pullAndParseUrl(infectedUrl);
         const parsedRecoveredData = App.pullAndParseUrl(recoveredUrl);
         const parsedDeathData = App.pullAndParseUrl(deathUrl);
-    
-        console.log(parsedInfectedData);
-        console.log(parsedInfectedData.value);
+
     
         parsedInfectedData.then(result => {
           this.setState({ infectedData: result.data });
@@ -86,7 +84,7 @@ class App extends React.Component {
     async componentWillMount(){
         const fetchedCountry = await fetchCountryData();
         const fetchStateData = await fetchCountryStateData();
-        console.log(fetchStateData);
+        // console.log(fetchStateData);
 
         this.setState({ data: fetchedCountry});
         this.setState({ stateCountry: fetchStateData});
@@ -95,7 +93,7 @@ class App extends React.Component {
     handleCountryChange = async (country) => {
       const fetchCountry = await fetchCountryData(country);
       const fetchStateData = await fetchCountryStateData(country);
-      console.log(fetchStateData);
+      // console.log(fetchStateData);
       this.setState({ data: fetchCountry, country:country, stateCountry:fetchStateData });
     }
 
@@ -105,10 +103,7 @@ class App extends React.Component {
             <div className="container-fluid px-md-5 py-md-2">
                 <Heading/>
                 <AllCases/>
-            </div>
-              
-            <div className="App">
-              <Grid container justify="center"   alignItems="center" spacing={3}>
+              <Grid container justify="center"   alignItems="center" spacing={3} >
                 <Grid item xs={10}>
                     <Leaflet
                     infectedData={this.state.infectedData}
@@ -137,7 +132,8 @@ class App extends React.Component {
                     />
                 </Grid>
                   </Grid>
-              </div>
+            </div>
+              
               <div className="container-fluid px-md-5">
               <CountryPicker handleCountryChange={this.handleCountryChange}/>
               <CountryCases country={this.state.country} data={this.state.data} />

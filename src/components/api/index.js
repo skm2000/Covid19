@@ -5,17 +5,17 @@ const url = 'https://covid19.mathdro.id/api';
 export const fetchCountries = async() => {
     try {
         const md = await axios.get(`${url}/countries/india/confirmed`);
-        console.log(md)
+        // console.log(md)
         const { data: { countries }} = await axios.get(`${url}/countries`)
         return countries.map((country) => country.name)
     } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
 }
 
 // fetch country state data
 export const fetchCountryStateData = async(country) => {
-    console.log(country)
+    // console.log(country)
     let changeableurl = url
     if(country){
         changeableurl = `${url}/countries/${country.toLowerCase()}/confirmed`
@@ -27,7 +27,7 @@ export const fetchCountryStateData = async(country) => {
         // for(var i=0;i<data.data.length;i++){
             stateArray.push(data.data)
         // }
-        console.log(data.data);
+        // console.log(data.data);
         return stateArray;
         // return { provinceState, confirmed, recovered, deaths, active }
 
@@ -56,7 +56,7 @@ export const fetchCountryData = async(country) => {
 export const fetchCountryJsonData = async(url) => {
     try{
         const data = await axios.get(url);
-        console.log(data.data);
+        // console.log(data.data);
         return data.data;
     }
     catch(error){
@@ -105,7 +105,7 @@ export const fetchDailyData = async() => {
 }
 
 export const fetchCummulativeCountry = (country) => {
-    console.log(`https://api.covid19api.com/total/country/${country}`)
+    // console.log(`https://api.covid19api.com/total/country/${country}`)
     return fetch(`https://api.covid19api.com/total/country/${country}`)
         .then(data => {
             return data.json()
@@ -119,7 +119,7 @@ export const fetchCummulativeCountry = (country) => {
                 active: dailyData.Active,
                 recovered: dailyData.Recovered
             }))
-            console.log("modifiedData:",modifiedData)
+            // console.log("modifiedData:",modifiedData)
             return modifiedData;
         })
         .catch(err => console.log(err))

@@ -158,7 +158,13 @@ const CountryCumulative = (props) => {
         ?(
             <Line
                 data={{
-                    labels:dailyData.map(( { date }) => new Date(date).toDateString()),
+                    labels:dailyData.map(( { date }) =>{ 
+                        
+                        const  dt = new Date(date).toDateString()
+                    //     console.log("Date", dt)
+                        return dt.substr(4, 6);   
+                    } 
+                    ),
                     datasets: [{
                         data: dailyData.map(({ confirmed }) => {
                             // console.log(Recovered);
@@ -244,7 +250,7 @@ const CountryCumulative = (props) => {
         //     {lineChartDeath}
         //     {/* </h1> */}
         // </div>
-        <Row className="pt-3 pb-5" style={{minHeight:'500px'}}>
+        <Row className="pt-3 pb-4" style={{minHeight:'500px'}}>
             <Col md={6} sm={12}>
                 {lineChartConfirmed}
             </Col>

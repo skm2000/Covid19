@@ -61,7 +61,7 @@ const CountryTable = (props) => {
 
 //     }
     const sendData = (state, confirmed, active, recovered, deaths) => () => {
-        console.log(state, confirmed, active, recovered, deaths)
+        // console.log(state, confirmed, active, recovered, deaths)
         setTconfirm(confirmed);
         setTrecovered(recovered);
         setTactive(active);
@@ -88,7 +88,7 @@ const CountryTable = (props) => {
         // onMouseMove={this.sendData(val.provinceState,val.confirmed,val.active,val.recovered,val.deaths)}
         return (
             <Row className="px-md-2">
-                {console.log("TABLE", table)}
+                {/* {console.log("TABLE", table)} */}
                 {/* {console.log("Props", this.props.data.confirmed.detail)} */}
                 {/* {console.log("State :",this.state.data)} */}
                  <Col xs={12} md={6} style={{overflowY:'scroll',maxHeight:'400px',scrollbarColor:'pink grey'}}>                     
