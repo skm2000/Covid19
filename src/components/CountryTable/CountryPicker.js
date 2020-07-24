@@ -17,8 +17,8 @@ const CountryPicker = ({ handleCountryChange }) => {
     return (
         <Container>
             <Row>
-                <form className="col-md-12" defaultValue="India" onChange={(e) => handleCountryChange(e.target.value)}>
-                    <select className="form-control select2" style={{fontSize:'x-large'}}>
+                <form className="col-md-12 py-2" defaultValue="" onChange={(e) => handleCountryChange(e.target.value)}>
+                    <select className="form-control select2 shadow-sm p-2 bg-white rounded" style={{fontSize:'x-large'}}>
                     <option value="">Select Country</option> 
                     {fetchedCountries.map((country,i) => <option key={i} value={country}>{country}</option>)}
                     </select>

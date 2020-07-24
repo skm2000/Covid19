@@ -10,7 +10,7 @@ import { fetchCountryData,fetchCountryStateData } from './components/api/index';
 import Leaflet from "./components/Visualizer/Map.js";
 import DateSlider from "./components/Visualizer/DateSlider.js";
 import DataSelector from "./components/Visualizer/DataSelector.js";
-
+import {Row,Col} from 'react-bootstrap';
 import Papa from "papaparse";
 import axios from "axios";
 import Grid from '@material-ui/core/Grid';
@@ -146,6 +146,17 @@ class App extends React.Component {
                 {this.state.country !== undefined ? <CountryTable country={this.state.country} data={this.state.data}/> : null}
                 {/* {this.state.country !== undefined ? <NewsCountry country={this.state.country}/> : null } */}
             </div>
+            <footer id="sticky-footer" className="py-3 mt-4 bg-dark text-white-50">
+              <Row>
+                <Col className="container text-left pl-3">
+                  <small><a target="_blank" style={{color: '#f5f5f5'}}href="https://www.linkedin.com/in/jiteshalbus/">Jitesh Chowdhury</a></small><small>&nbsp;&nbsp;<a target="_blank" style={{color: '#f5f5f5'}}href="https://www.linkedin.com/in/utkarsh-kumar-522b48118/">Utkarsh Kumar</a></small><br/>
+                  <small><a target="_blank" style={{color: '#f5f5f5'}}href="https://www.linkedin.com/in/pratik-dey-74b7bb173/">Pratik Dey</a>&nbsp;&nbsp;</small><small><a target="_blank" style={{color: '#f5f5f5'}}href="https://www.linkedin.com/in/shubham-kumar-948409185/">Shubham Kumar</a></small>
+                </Col>
+                <Col className="container d-flex justify-content-end mt-3 pr-3">
+                <small><a target="_blank" style={{color: '#f5f5f5'}}href="https://drive.google.com/file/d/1A3XpzFUGEMRJE7u2DJGf8CSHwsASmLjn/view">Project Documentation</a></small>
+                </Col>
+              </Row>
+            </footer>
          </>
       )
   }
